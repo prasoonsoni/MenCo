@@ -37,6 +37,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView14"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="go.json"
@@ -80,14 +81,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         app:cardBackgroundColor="@color/yellow"
         app:cardCornerRadius="15dp"
         app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
+        app:layout_constraintTop_toTopOf="@+id/cardView3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -161,7 +162,7 @@
             android:text="Greeting Message"
             android:textColor="@color/bg_color"
             android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView7"
+            app:layout_constraintEnd_toStartOf="@+id/profile"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -181,7 +182,7 @@
             app:layout_constraintTop_toBottomOf="@+id/greeting" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -272,11 +273,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/pacifico"
         android:gravity="center"
-        android:text="Connecting people in need\nwith people who can help."
+        android:text="Supporting you and your\nHealth during Pandemic."
         android:textColor="@color/text_color"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -314,6 +315,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="go.json"
@@ -432,6 +434,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="go.json"

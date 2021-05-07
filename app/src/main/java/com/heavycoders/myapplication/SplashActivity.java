@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
-        }, 3500);
+        }, 5000);
 
         String url = "https://api.quotable.io/random";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, s -> {

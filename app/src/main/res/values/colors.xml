@@ -16,4 +16,12 @@
     <color name="text_color">#2b2e4a</color>
     <color name="purple">#958ce8</color>
     <color name="darkBlue">#002aff</color>
+
+    <color name="text_nav">
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+            <item android:color="#f9ca1c" android:state_checked="true"/>
+            <item android:color="@color/white"/>
+        </selector>
+    </color>
+
 </resources>

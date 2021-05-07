@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         pd.setIndeterminate(true);
         pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pd.setTitle("Please Wait");
-        pd.setMessage("Logging in...");
+        pd.setMessage("Creating Account...");
         pd.setCancelable(false);
 
         rName = findViewById(R.id.rName);

@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     private EditText stateName;
     private LocationManager locationManager;
     private static final int REQUEST_LOCATION = 1;
+    private ImageView profile;
     Geocoder geocoder;
+    List<Address> addresses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,29 +69,58 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         volunteer = findViewById(R.id.volunteer);
         resources = findViewById(R.id.resources);
         recommendation = findViewById(R.id.recommendation);
+        profile = findViewById(R.id.profile);
 
+        recommendation.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, RecommendActivity.class));
+        });
 
+        profile.setOnClickListener(v -> {
+            mAuth.signOut();
+            Toast.makeText(this, "Successfully Logged out.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        });
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager
                 .PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager
                 .PERMISSION_GRANTED) {
-            return;
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+        } else {
+            try {
+                Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
+                onLocationChanged(location);
+            } catch (Exception e) {
+                Toast.makeText(this, "Location not enabled.", Toast.LENGTH_SHORT).show();
+            }
         }
-
-        Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
-        onLocationChanged(location);
 
 
         volunteer.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, VolunteerActivity.class);
-            intent.putExtra("state", stateName.getText().toString());
-            startActivity(intent);
+            if(stateName.getText().toString().isEmpty()){
+                Toast.makeText(this, "Location cannot be empty, Please Wait...", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(MainActivity.this, VolunteerActivity.class);
+                intent.putExtra("state", addresses.get(0).getAdminArea());
+                intent.putExtra("city", addresses.get(0).getLocality());
+                intent.putExtra("name", userName.getText().toString());
+                startActivity(intent);
+            }
         });
 
         resources.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, NeedyActivity.class));
+            if(stateName.getText().toString().isEmpty()){
+                Toast.makeText(this, "Location cannot be empty, Please Wait...", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(MainActivity.this, NeedyActivity.class);
+                intent.putExtra("state", addresses.get(0).getAdminArea());
+                intent.putExtra("city", addresses.get(0).getLocality());
+                intent.putExtra("name", userName.getText().toString());
+                startActivity(intent);
+            }
         });
 
     }
@@ -96,25 +128,25 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @Override
     protected void onStart() {
         super.onStart();
-        if(mAuth.getCurrentUser()==null){
+        if (mAuth.getCurrentUser() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         } else {
             Date date = new Date();
             int time = date.getHours();
-            if(time>=0 && time<=12){
+            if (time >= 0 && time <= 12) {
                 greeting.setText("Good Morning,");
-            } else if(time>12 && time<=16){
+            } else if (time > 12 && time <= 16) {
                 greeting.setText("Good Afternoon,");
-            } else if(time>16 && time<=20){
+            } else if (time > 16 && time <= 20) {
                 greeting.setText("Good Evening,");
-            } else if(time>20 && time<=24){
+            } else if (time > 20 && time <= 24) {
                 greeting.setText("Good Night,");
             }
             Task<DataSnapshot> name = db.child("users").child(mAuth.getCurrentUser().getUid()).child("name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         userName.setText(task.getResult().getValue().toString());
                     }
                 }
@@ -126,17 +158,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void onLocationChanged(@NonNull Location location) {
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
-        Log.i("lat", latitude+ "");
-        Log.i("long", longitude+"");
+        Log.i("lat", latitude + "");
+        Log.i("long", longitude + "");
         geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            List <Address> addresses = geocoder.getFromLocation(latitude,longitude,1);
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
             Log.i("state", addresses.get(0).getAdminArea().toString());
             Log.i("city", addresses.get(0).getLocality());
-            stateName.setText(addresses.get(0).getAdminArea());
+            stateName.setText(addresses.get(0).getLocality() + ", " + addresses.get(0).getAdminArea());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

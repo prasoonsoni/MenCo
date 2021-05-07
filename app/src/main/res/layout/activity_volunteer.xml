@@ -7,6 +7,117 @@
     android:background="@color/bg_color"
     tools:context=".VolunteerActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/yourNumberLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Your Number"
+        android:textColorHint="@color/blue"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourLocationLayout"
+        app:startIconDrawable="@drawable/ic_phone"
+        app:startIconTint="@color/blue"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yourNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:fontFamily="@font/poppins"
+            android:inputType="number"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/yourLocationLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Your Location"
+        android:textColorHint="@color/blue"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/yourNumberLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourNameLayout"
+        app:startIconDrawable="@drawable/ic_location"
+        app:startIconTint="@color/blue"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yourLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:fontFamily="@font/poppins"
+            android:inputType="none"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/yourNameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Your Name"
+        android:textColorHint="@color/blue"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/yourLocationLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:startIconDrawable="@drawable/ic_person"
+        app:startIconTint="@color/blue"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/yourName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:fontFamily="@font/poppins"
+            android:inputType="none"
+            android:textColor="@color/blue"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
@@ -50,4 +161,88 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView5" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourNumberLayout">
+
+        <RadioButton
+            android:id="@+id/oxygenButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/blue"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Oxygen\nSupply"
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/plasmaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:buttonTint="@color/blue"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Plasma\nAssistance"
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/bedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/blue"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Hospital\nBeds"
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/foodButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:buttonTint="@color/blue"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Food\nService"
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

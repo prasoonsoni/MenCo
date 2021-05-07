@@ -18,7 +18,4 @@
         android:icon="@drawable/hospital_bed"
         android:id="@+id/hospital" />
 
-    <item android:title="Concentrator"
-        android:icon="@drawable/oxygen_concentrator"
-        android:id="@+id/oxygenConcentrator" />
 </menu>
