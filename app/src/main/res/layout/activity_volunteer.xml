@@ -17,6 +17,7 @@
         android:layout_marginEnd="32dp"
         android:hint="Your Number"
         android:textColorHint="@color/blue"
+        android:translationX="-2000px"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
@@ -54,6 +55,7 @@
         android:layout_marginEnd="32dp"
         android:hint="Your Location"
         android:textColorHint="@color/blue"
+        android:translationX="-2000px"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
@@ -91,6 +93,7 @@
         android:layout_marginEnd="32dp"
         android:hint="Your Name"
         android:textColorHint="@color/blue"
+        android:translationX="-2000px"
         app:boxCornerRadiusBottomEnd="15dp"
         app:boxCornerRadiusBottomStart="15dp"
         app:boxCornerRadiusTopEnd="15dp"
@@ -102,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/details"
         app:startIconDrawable="@drawable/ic_person"
         app:startIconTint="@color/blue"
         tools:ignore="MissingConstraints">
@@ -126,6 +129,7 @@
         android:elevation="20dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:translationY="-2000px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -136,9 +140,10 @@
         app:titleTextColor="@color/white" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView5"
+        android:id="@+id/animation"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:alpha="0"
         android:scaleType="fitCenter"
         android:translationY="0px"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,9 +155,10 @@
         app:lottie_loop="true" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:fontFamily="@font/poppins_light"
         android:gravity="center"
         android:text="Submit your details here."
@@ -160,7 +166,7 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView5" />
+        app:layout_constraintTop_toBottomOf="@+id/animation" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -168,6 +174,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
+        android:translationX="-2000px"
         android:weightSum="5"
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -239,6 +246,7 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:translationY="2000px"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

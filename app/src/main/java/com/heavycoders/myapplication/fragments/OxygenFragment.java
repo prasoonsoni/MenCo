@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,8 +71,11 @@ public class OxygenFragment extends Fragment {
         String name = bd.getString("name");
 
         oxygenRecyclerView = root.findViewById(R.id.oxygenRecyclerView);
+        LottieAnimationView noView = root.findViewById(R.id.noData);
+        TextView noText = root.findViewById(R.id.noText);
         oxygenRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<Model> list = new ArrayList<>();
+
 
         OxygenAdapter oxygenAdapter = new OxygenAdapter(list, getContext());
         oxygenRecyclerView.setAdapter(oxygenAdapter);
@@ -82,10 +87,12 @@ public class OxygenFragment extends Fragment {
                     Model model = dataSnapshot.getValue(Model.class);
                     list.add(model);
                 }
-                oxygenAdapter.notifyDataSetChanged();
                 if(list.isEmpty()){
-                    Toast.makeText(getContext(), "no data available", Toast.LENGTH_SHORT).show();
+                    noView.setVisibility(View.VISIBLE);
+                    noText.setVisibility(View.VISIBLE);
+
                 }
+                oxygenAdapter.notifyDataSetChanged();
             }
 
             @Override

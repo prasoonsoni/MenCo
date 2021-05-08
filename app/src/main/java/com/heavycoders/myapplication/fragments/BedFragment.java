@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,6 +71,8 @@ public class BedFragment extends Fragment {
         String city = bd.getString("city");
         String name = bd.getString("name");
 
+        LottieAnimationView noView = root.findViewById(R.id.noData4);
+        TextView noText = root.findViewById(R.id.noText4);
         bedRecyclerView = root.findViewById(R.id.bedRecyclerView);
         bedRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<Model> list = new ArrayList<>();
@@ -83,10 +87,12 @@ public class BedFragment extends Fragment {
                     Model model = dataSnapshot.getValue(Model.class);
                     list.add(model);
                 }
-                bedAdapter.notifyDataSetChanged();
+
                 if(list.isEmpty()){
-                    Toast.makeText(getContext(), "no data available", Toast.LENGTH_SHORT).show();
+                    noView.setVisibility(View.VISIBLE);
+                    noText.setVisibility(View.VISIBLE);
                 }
+                bedAdapter.notifyDataSetChanged();
             }
 
             @Override

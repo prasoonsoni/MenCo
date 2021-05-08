@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,6 +72,9 @@ public class PlasmaFragment extends Fragment {
         String city = bd.getString("city");
         String name = bd.getString("name");
 
+        LottieAnimationView noView = root.findViewById(R.id.noData2);
+        TextView noText = root.findViewById(R.id.noText2);
+
         plasmaRecyclerView = root.findViewById(R.id.plasmaRecyclerView);
         plasmaRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<Model> list = new ArrayList<>();
@@ -84,10 +89,11 @@ public class PlasmaFragment extends Fragment {
                     Model model = dataSnapshot.getValue(Model.class);
                     list.add(model);
                 }
-                plasmaAdapter.notifyDataSetChanged();
                 if(list.isEmpty()){
-                    Toast.makeText(getContext(), "no data available", Toast.LENGTH_SHORT).show();
+                    noView.setVisibility(View.VISIBLE);
+                    noText.setVisibility(View.VISIBLE);
                 }
+                plasmaAdapter.notifyDataSetChanged();
             }
 
             @Override
