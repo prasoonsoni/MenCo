@@ -53,7 +53,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Recommendations"
+                android:text="Discover"
                 android:textColor="@color/text_color"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
