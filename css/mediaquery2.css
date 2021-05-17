@@ -1,0 +1,26 @@
+
+nav{
+    display:none;
+    height:100%;
+}
+section{
+    padding:0;
+}
+ul li{display:block}
+
+.mockups{
+    display:flex;
+    flex-wrap: nowrap;
+    overflow:hidden;
+}
+#intro{
+    margin: 0%;
+    padding-right: 26px;
+    padding-top: 40px;
+}
+.intro h1{
+    padding: 0%;
+}
+.mockups{
+    display: none;
+}

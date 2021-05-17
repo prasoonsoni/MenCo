@@ -1,0 +1,11 @@
+.container{
+    flex-direction:column;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+.intro{
+    height:100%;
+}
+.mockups{
+    display: none;
+}
